@@ -62,14 +62,17 @@ h1 {
   padding-bottom: 10px;
 }
 
+/* PROGRESSIVE SLIDER IMAGES */
 .slides img {
   flex: 0 0 70%;
   max-width: 300px;
   scroll-snap-align: center;
   border-radius: 15px;
   object-fit: cover;
-  transition: transform 0.3s ease;
   cursor: grab;
+  opacity: 0.4; /* start faded */
+  transform: scale(0.9); /* start smaller */
+  transition: transform 0.5s ease, opacity 0.5s ease;
 }
 
 .slides img:active {
@@ -78,6 +81,11 @@ h1 {
 
 .slides img:hover {
   transform: scale(1.05);
+}
+
+.slides img.active-img {
+  opacity: 1; /* fully visible */
+  transform: scale(1);
 }
 
 /* SLIDER DOTS */
@@ -90,7 +98,7 @@ h1 {
   display: inline-block;
   width: 10px;
   height: 10px;
-  background: #a6d8a6; /* green dots */
+  background: #a6d8a6;
   border-radius: 50%;
   margin: 0 5px;
   opacity: 0.5;
@@ -108,7 +116,7 @@ h1 {
 }
 
 .music-button button {
-  background: #a6d8a6; /* green button */
+  background: #a6d8a6;
   color: white;
   border: none;
   border-radius: 12px;
@@ -127,7 +135,7 @@ h1 {
 .video-panel {
   margin: 20px 0;
   padding: 10px;
-  background: #d7f0d7dd; /* pastel green */
+  background: #d7f0d7dd;
   border-radius: 20px;
   box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
