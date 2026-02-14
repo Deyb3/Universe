@@ -42,7 +42,7 @@
       <!-- Progress Dots -->
       <div class="slider-dots"></div>
 
-      <!-- 🎵 MUSIC BUTTON BELOW IMAGES -->
+      <!-- 🎵 MUSIC BUTTON BELOW SLIDER -->
       <div class="music-button">
         <button id="music-btn">Play Music 🎶</button>
         <audio id="love-audio" src="assets/audio/love-song.mp3" loop></audio>
@@ -78,7 +78,7 @@
       }
     });
 
-    // Slider dots
+    // Slider dots & progressive images
     const slidesContainer = document.querySelector('.slides');
     const slides = document.querySelectorAll('.slides img');
     const dotsContainer = document.querySelector('.slider-dots');
@@ -92,7 +92,7 @@
 
     const dots = document.querySelectorAll('.slider-dots span');
 
-    // Update active dot based on center image
+    // Scroll event for center snap + progressive effect
     slidesContainer.addEventListener('scroll', () => {
       const containerCenter = slidesContainer.scrollLeft + slidesContainer.offsetWidth / 2;
 
@@ -108,8 +108,13 @@
         }
       });
 
+      // Update dots
       dots.forEach(dot => dot.classList.remove('active'));
       if (dots[closestIndex]) dots[closestIndex].classList.add('active');
+
+      // Progressive image effect
+      slides.forEach(slide => slide.classList.remove('active-img'));
+      slides[closestIndex].classList.add('active-img');
     });
 
     // Make dots clickable
@@ -118,6 +123,9 @@
         slides[idx].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
       });
     });
+
+    // Initial progressive effect
+    slides[0].classList.add('active-img');
   </script>
 
 </body>
